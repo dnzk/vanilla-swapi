@@ -3,6 +3,7 @@
     "node": "4.2.6"
   },
   "devDependencies": {
+    "bower": "^1.7.9",
     "connect-livereload": "^0.5.4",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
