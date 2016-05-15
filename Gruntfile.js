@@ -18,6 +18,15 @@ module.exports = function(grunt) {
         }
       }
     },
+    connect: {
+      server: {
+        options: {
+          livereload: true,
+          port: 9001,
+          base: 'build',
+        },
+      }
+    },
     watch: {
       less: {
         files: ['src/**/*.less'],
@@ -30,11 +39,16 @@ module.exports = function(grunt) {
     },
   });
 
-  var npmTasks = ['grunt-contrib-pug', 'grunt-contrib-less', 'grunt-contrib-watch'];
+  var npmTasks = [
+    'grunt-contrib-pug',
+    'grunt-contrib-less',
+    'grunt-contrib-watch',
+    'grunt-contrib-connect',
+  ];
   npmTasks.forEach(function(npmTask) {
     grunt.loadNpmTasks(npmTask);
   });
 
-  grunt.registerTask('dev', ['pug:compile', 'less:develop', 'watch']);
+  grunt.registerTask('dev', ['pug:compile', 'less:develop', 'connect:server', 'watch']);
   
 };
