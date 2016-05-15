@@ -1,0 +1,19 @@
+{
+  "name": "vanilla-swapi",
+  "version": "0.0.1",
+  "homepage": "https://github.com/dnzk/vanilla-swapi",
+  "authors": [
+    "dnzk <danishkalesaran@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lesshat": "~3.0.2"
+  }
+}
