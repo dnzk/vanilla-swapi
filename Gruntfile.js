@@ -37,6 +37,11 @@ module.exports = function(grunt) {
         tasks: ['pug:compile']
       }
     },
+    clean: {
+      build: {
+        src: ['build']
+      }
+    },
   });
 
   var npmTasks = [
@@ -44,11 +49,12 @@ module.exports = function(grunt) {
     'grunt-contrib-less',
     'grunt-contrib-watch',
     'grunt-contrib-connect',
+    'grunt-contrib-clean',
   ];
   npmTasks.forEach(function(npmTask) {
     grunt.loadNpmTasks(npmTask);
   });
 
-  grunt.registerTask('dev', ['pug:compile', 'less:develop', 'connect:server', 'watch']);
+  grunt.registerTask('dev', ['clean:build', 'pug:compile', 'less:develop', 'connect:server', 'watch']);
   
 };
