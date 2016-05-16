@@ -53,8 +53,10 @@ module.exports = function(grunt) {
         dest: 'build/assets/fonts/'
       },
       js: {
-        src: 'src/app.js',
-        dest: 'build/app.js'
+        expand: true,
+        cwd: 'src/assets/script',
+        src: '*.js',
+        dest: 'build/assets/script'
       }
     }
   });
