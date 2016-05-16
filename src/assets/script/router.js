@@ -1,21 +1,3 @@
-var View = (function(document) {
-
-  function renderTemplate(templateString) {
-    var template = document.createElement('div');
-    template.innerHTML = templateString;
-    var grandContainer = document.querySelector('.feed-grand-container');
-    while (grandContainer.firstChild) {
-      grandContainer.removeChild(grandContainer.firstChild);
-    }
-    grandContainer.appendChild(template);
-  }
-
-  return {
-    renderTemplate: renderTemplate
-  };
-
-}(document));
-
 var Router = (function() {
 
   var templateMap = {
