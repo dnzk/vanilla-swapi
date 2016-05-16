@@ -21,13 +21,11 @@ var View = (function(document) {
       var clone = document.importNode(singleFeed, true);
 
 
-      // clone.__swapi_data__ = data;
+      clone.__swapi_url__ = Router.extractProperHash(data.url);
 
       clone.onclick = function(event) {
         event.preventDefault();
-        // console.log(Router.extractProperHash(this.__swapi_data__.url));
-        // renderDetail(this.__swapi_data__);
-        // renderDetail(index);
+        window.location.hash = this.__swapi_url__;
       }
 
       document.querySelector('.feed-container').appendChild(clone);
@@ -50,6 +48,11 @@ var View = (function(document) {
     // // detailContainer.querySelector()
     var clone = document.importNode(detailContainer, true);
     document.querySelector('.backdrop').appendChild(clone);
+
+    var model = new Model(window.location.hash);
+    model.get(function(data) {
+      console.log(data);
+    })
     // // var detailContainer = document.querySelector('.detail-container');
     // // var string = '';
 
