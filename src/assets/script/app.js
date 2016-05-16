@@ -7,7 +7,7 @@ var App = (function(document, window) {
       }
       Router.goTo(window.location.hash);
       var people = new Model('people');
-      people.get(success, error);
+      // people.get(success, error);
 
       function success(data) {
         // render
