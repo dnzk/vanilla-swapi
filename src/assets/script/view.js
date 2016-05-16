@@ -31,11 +31,11 @@ var View = (function(document) {
         if (bottom) {
           if (Data.currentItem.next) {
             var resource = Data.currentItem.next.split('/api/')[1];
+            var model = new Model('#' + resource);
+            model.get(function(response) {
+              renderList(response.results);
+            });
           }
-          var model = new Model('#' + resource);
-          model.get(function(response) {
-            renderList(response.results);
-          });
         }
       };
     }
