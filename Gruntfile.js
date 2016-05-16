@@ -34,6 +34,10 @@ module.exports = function(grunt) {
       pug: {
         files: ['src/**/*.pug'],
         tasks: ['pug:compile']
+      },
+      js: {
+        files: ['src/**/*.js'],
+        tasks: ['copy:js']
       }
     },
     clean: {
@@ -47,6 +51,10 @@ module.exports = function(grunt) {
         cwd: 'bower_components/components-font-awesome/fonts',
         src: '**',
         dest: 'build/assets/fonts/'
+      },
+      js: {
+        src: 'src/app.js',
+        dest: 'build/app.js'
       }
     }
   });
@@ -63,6 +71,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks(npmTask);
   });
 
-  grunt.registerTask('dev', ['clean:build', 'pug:compile', 'less:develop', 'copy:font', 'connect:server', 'watch']);
+  grunt.registerTask('dev', ['clean:build', 'pug:compile', 'less:develop', 'copy:font', 'copy:js', 'connect:server', 'watch']);
   
 };
