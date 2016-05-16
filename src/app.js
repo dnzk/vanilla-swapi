@@ -58,24 +58,29 @@ var App = (function(document, window) {
         // render
         var results = data.results;
 
-        var feeds = document.querySelectorAll('.main-feed');
-        // feeds = [].slice.call(feeds).map(function(feed, i) {
-        //   var name = feed.querySelector('.name')[0];
-        //   name.innerHTML = data[i].name;
-        //   feed.query
-        //   return feed;
-        // });
+        var feedListTemplate = document.querySelector('#template-feed-list');
 
-        [].slice.call(feeds).forEach(function(feed, i) {
-          feed.querySelector('.name').innerHTML = results[i].name;
+        results.forEach(function(result) {
+          var singleFeed = feedListTemplate.content.querySelector('.main-feed');
+          singleFeed.querySelector('.name').innerHTML = result.name;
+          var clone = document.importNode(singleFeed, true);
+          document.querySelector('.feed-container').appendChild(clone);
+
         });
 
-        // console.log(feeds);
       }
 
       function error(data) {
-        // render
+        // handle error
         console.log(data);
+      }
+
+      function getTemplate(id) {
+        return document.querySelector(id);
+      }
+
+      function mashDataWithTemplate(data, template) {
+        // return 
       }
 
     });
