@@ -13,9 +13,19 @@ module.exports = function(grunt) {
         options: {
           pretty: true,
         },
-        files: {
-          'build/index.html': 'src/index.pug',
-        }
+        files: [
+          {
+            src: 'src/index.pug',
+            dest: 'build/index.html'
+          },
+          {
+            cwd: 'src/assets/template',
+            src: '**/*.pug',
+            dest: 'build/assets/template',
+            expand: true,
+            ext: '.html'
+          }
+        ]
       }
     },
     connect: {
@@ -57,7 +67,7 @@ module.exports = function(grunt) {
         cwd: 'src/assets/script',
         src: '*.js',
         dest: 'build/assets/script'
-      }
+      },
     }
   });
 
