@@ -1,3 +1,14 @@
+var Data = (function() {
+
+  var db = {};
+  var currentItem = {};
+
+  return {
+    db: db,
+    currentItem: currentItem,
+  };
+}());
+
 var Model = (function(window) {
 
   var base = 'http://swapi.co/api/';

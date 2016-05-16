@@ -28,7 +28,7 @@ body {
   }
 }
 
-.detail-grand-container {
+/*.detail-grand-container {
   position: fixed;
   right: 0px;
   top: 0px;
@@ -38,7 +38,7 @@ body {
   .detail-container {
     margin: 20px;
   }
-}
+}*/
 
 .feed-grand-container {
   margin-left: 50px;
@@ -52,6 +52,27 @@ body {
       display: block;
       height: 50px;
       background-color: lightblue;
+    }
+  }
+}
+
+.detail-grand-container {
+  .backdrop {
+    position: fixed;
+    z-index: 2000;
+    background-color: grey;
+    opacity: .5;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    .detail-container {
+      background-color: white;
+      width: 50%;
+      height: 250px;
+      z-index: 2016;
+      opacity: 1;
+      margin: 20px auto;
     }
   }
 }
