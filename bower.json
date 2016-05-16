@@ -14,6 +14,7 @@
     "tests"
   ],
   "dependencies": {
+    "components-font-awesome": "~4.6.1",
     "lesshat": "~3.0.2",
     "normalize.less": "~1.0.0"
   }
