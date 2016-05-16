@@ -18,6 +18,10 @@ var Router = (function() {
       if (xhr.readyState === 4) {
         if (xhr.status >= 200 && xhr.status < 400) {
           View.renderTemplate(xhr.response);
+          var model = new Model(hash);
+          model.get(function(data) {
+            View.renderList(data.results);
+          });
         } else {
           console.log(xhr.response);
         }

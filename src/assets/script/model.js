@@ -20,7 +20,11 @@ var Model = (function(window) {
   }
 
   function ModelClass(resource) {
-    this.resource = resource + '/';
+    if (resource.indexOf('#') === 0) {
+      this.resource = resource.replace('#', '');
+    } else {
+      this.resource = 'films';
+    }
   }
 
   ModelClass.prototype.get = function(success, error) {
