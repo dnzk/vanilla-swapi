@@ -18,6 +18,15 @@ var View = (function(document) {
       var singleFeed = feedListTemplate.content.querySelector('.main-feed');
       singleFeed.querySelector('.name').innerHTML = data.name;
       var clone = document.importNode(singleFeed, true);
+
+      clone.__swapi_data__ = data;
+
+      clone.onclick = function(event) {
+        event.preventDefault();
+        // manage detail data here
+        console.log(this.__swapi_data__);
+      }
+
       document.querySelector('.feed-container').appendChild(clone);
     });
   }
