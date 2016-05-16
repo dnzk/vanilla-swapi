@@ -1,15 +1,3 @@
-var Router = (function() {
-
-  function goTo(hash) {
-    console.log(hash);
-  }
-
-  return {
-    goTo: goTo
-  };
-
-}());
-
 var Model = (function(window) {
 
   var base = 'http://swapi.co/api/';
