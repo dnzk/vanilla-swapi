@@ -41,6 +41,14 @@ module.exports = function(grunt) {
         src: ['build']
       }
     },
+    copy: {
+      font: {
+        expand: true,
+        cwd: 'bower_components/components-font-awesome/fonts',
+        src: '**',
+        dest: 'build/assets/fonts/'
+      }
+    }
   });
 
   var npmTasks = [
@@ -49,11 +57,12 @@ module.exports = function(grunt) {
     'grunt-contrib-watch',
     'grunt-contrib-connect',
     'grunt-contrib-clean',
+    'grunt-contrib-copy',
   ];
   npmTasks.forEach(function(npmTask) {
     grunt.loadNpmTasks(npmTask);
   });
 
-  grunt.registerTask('dev', ['clean:build', 'pug:compile', 'less:develop', 'connect:server', 'watch']);
+  grunt.registerTask('dev', ['clean:build', 'pug:compile', 'less:develop', 'copy:font', 'connect:server', 'watch']);
   
 };
