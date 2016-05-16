@@ -26,8 +26,12 @@ var View = (function(document) {
         renderList(response.results);
       });
 
-      document.body.onscroll = function() {
-        console.log(document.body);
+      window.onscroll = function() {
+        var bottom = window.scrollY + window.innerHeight === document.body.clientHeight;
+        if (bottom) {
+          // do load
+          // console.log('bottom');
+        }
       };
     }
   }
