@@ -29,8 +29,13 @@ var View = (function(document) {
       window.onscroll = function() {
         var bottom = window.scrollY + window.innerHeight === document.body.clientHeight;
         if (bottom) {
-          // do load
-          // console.log('bottom');
+          if (Data.currentItem.next) {
+            var resource = Data.currentItem.next.split('/api/')[1];
+          }
+          var model = new Model('#' + resource);
+          model.get(function(response) {
+            renderList(response.results);
+          });
         }
       };
     }

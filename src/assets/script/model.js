@@ -15,7 +15,8 @@ var Model = (function(window) {
     error = error || function() {};
 
     Request.abstract('GET', base + this.resource, function(response) {
-      success(JSON.parse(response));
+      Data.currentItem = JSON.parse(response);
+      success(Data.currentItem);
     }, function(response) {
       error(JSON.parse(response));
     });
