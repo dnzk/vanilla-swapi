@@ -6,20 +6,6 @@ var App = (function(document, window) {
         return;
       }
       Router.goTo(window.location.hash);
-
-      function error(data) {
-        // handle error
-        console.log(data);
-      }
-
-      function getTemplate(id) {
-        return document.querySelector(id);
-      }
-
-      function mashDataWithTemplate(data, template) {
-        // return 
-      }
-
     });
 
     window.addEventListener('hashchange', function() {
