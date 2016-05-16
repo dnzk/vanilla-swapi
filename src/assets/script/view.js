@@ -25,18 +25,20 @@ var View = (function(document) {
       model.get(function(response) {
         renderList(response.results);
       });
+
+      document.body.onscroll = function() {
+        console.log(document.body);
+      };
     }
   }
 
   function renderList(list) {
-
     var feedListTemplate = document.querySelector('#template-feed-list');
 
     list.forEach(function(data, index) {
       var singleFeed = feedListTemplate.content.querySelector('.main-feed');
       singleFeed.querySelector('.name').innerHTML = data.name || data.title;
       var clone = document.importNode(singleFeed, true);
-
 
       clone.__swapi_url__ = Router.extractProperHash(data.url);
 
@@ -54,31 +56,56 @@ var View = (function(document) {
 
     var detailTemplate = document.querySelector('#template-detail');
     var detailContainer = detailTemplate.content.querySelector('.detail-container');
-    // // detailContainer.querySelector()
     var clone = document.importNode(detailContainer, true);
-    document.querySelector('.backdrop').appendChild(clone);
+    var backdrop = document.querySelector('.backdrop');
+    backdrop.appendChild(clone);
+    // backdrop.onclick = function() {
+    //   // go out of detail
+    //   window.location.hash = '#people';
+
+    //   // remove detail view
+    //   var detailContainer = document.querySelector('.detail-grand-container');
+    //   while (detailContainer.firstChild) {
+    //     detailContainer.removeChild(detailContainer.firstChild);
+    //   }
+    // };
+    backdrop.onclick = clearBackdrop;
+
+    // document.querySelector('.backdrop').appendChild(clone);
 
     var model = new Model(window.location.hash);
     model.get(function(data) {
-      console.log(data);
-    })
-    // // var detailContainer = document.querySelector('.detail-container');
-    // // var string = '';
+      bindDetail(data);
+    });
+  }
 
-    // // while (detailContainer.firstChild) {
-    // //   detailContainer.removeChild(detailContainer.firstChild);
-    // // }
+  function clearBackdrop() {
+    // go out of detail
+    window.location.hash = window.location.hash.split('/')[0];
 
-    // // for (var property in item) {
-    // //   if (item.hasOwnProperty(property)) {
-    // //     var p = document.createElement('p');
-    // //     string = property  + ': ' + item[property];
-    // //     p.innerText = string;
-    // //     detailContainer.appendChild(p);
-    // //   }
-    // // }
+    // remove detail view
+    var detailContainer = document.querySelector('.detail-grand-container');
+    while (detailContainer.firstChild) {
+      detailContainer.removeChild(detailContainer.firstChild);
+    }
+  }
 
-    // // document.querySelector('.detail-container').innerHTML = JSON.stringify(item);
+  function bindDetail(item) {
+    var detailContainer = document.querySelector('.detail-container');
+    var string = '';
+
+    while (detailContainer.firstChild) {
+      detailContainer.removeChild(detailContainer.firstChild);
+    }
+
+    for (var property in item) {
+      if (item.hasOwnProperty(property)) {
+        var p = document.createElement('p');
+        string = property + ': ' + item[property];
+        p.innerText = string;
+        detailContainer.appendChild(p);
+      }
+    }
   }
 
   return {
