@@ -1,5 +1,11 @@
 var View = (function(document) {
 
+  function getTemplate(url, success, error) {
+    success = success || renderTemplate;
+
+    Request.abstract('GET', url, success);
+  }
+
   function renderTemplate(templateString) {
     var template = document.createElement('div');
     template.innerHTML = templateString;
@@ -76,6 +82,7 @@ var View = (function(document) {
     renderTemplate: renderTemplate,
     renderList: renderList,
     renderDetail: renderDetail,
+    getTemplate: getTemplate,
   };
 
 }(document));
